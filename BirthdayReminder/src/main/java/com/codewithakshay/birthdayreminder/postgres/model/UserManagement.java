@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -28,7 +29,7 @@ public class UserManagement {
 	private String userName;
 	@NotEmpty(message = "password should not be empty")
 	private String password;
-	@NotEmpty(message = "phone number should not be empty")
+	@NotNull(message = "phone number should not be empty")
 	@Column(name = "phone_number")
 	private Long phoneNumber;
 	@UpdateTimestamp
