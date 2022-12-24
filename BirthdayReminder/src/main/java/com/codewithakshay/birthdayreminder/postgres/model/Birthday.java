@@ -1,13 +1,22 @@
 package com.codewithakshay.birthdayreminder.postgres.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.Data;
 
@@ -19,15 +28,24 @@ public class Birthday {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long birthdayId;
-	@Column(name = "contact_number")
-	private Long contactNumber;
+	@NotEmpty(message = "please enter name of person, whose details you've to save")
 	private String name;
-	@Column(name = "email_id")
-	private String emailId;
-	
-	private String Address;
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "contact_id")
+	private Contact contact;
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id")
+	private Address address;
+	@NotEmpty(message = "please enter your relationship with this person")
 	private String relation;
+	@NotEmpty(message = "please select appropriate gender")
 	private String gender;
+	@NotEmpty(message = "select date of birth")
 	private Date date;
+	@UpdateTimestamp
+	@Column(name = "created_at")
+	private Timestamp createdAt;
 
 }
