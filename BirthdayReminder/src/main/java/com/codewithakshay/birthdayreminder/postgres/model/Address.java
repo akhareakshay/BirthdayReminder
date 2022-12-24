@@ -29,6 +29,10 @@ public class Address {
 	private String state;
 	@NotEmpty(message = "please enter country name")
 	private String country;
+	@NotEmpty(message = "please enter district")
+	private String district;
+	@NotEmpty(message = "please enter taluka")
+	private String taluka;
 	@NotEmpty(message = "please enter pincode")
 	private String pincode;
 	@UpdateTimestamp
