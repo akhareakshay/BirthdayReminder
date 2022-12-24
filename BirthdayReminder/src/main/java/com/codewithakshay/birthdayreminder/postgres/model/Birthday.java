@@ -18,6 +18,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
 
 @Entity
@@ -42,7 +44,8 @@ public class Birthday {
 	private String relation;
 	@NotEmpty(message = "please select appropriate gender")
 	private String gender;
-	@NotEmpty(message = "select date of birth")
+//	@NotEmpty(message = "select date of birth")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	private Date date;
 	@UpdateTimestamp
 	@Column(name = "created_at")
