@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -23,7 +24,7 @@ public class Contact {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "contact_id")
 	private Long contactId;
-	@NotEmpty(message = "please enter contact number")
+	@NotNull(message = "please enter contact number")
 	@Column(name = "contact_number")
 	private Long contactNumber;
 	@NotEmpty(message = "please enter email id")
