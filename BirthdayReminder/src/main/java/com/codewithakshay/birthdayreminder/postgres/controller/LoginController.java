@@ -15,7 +15,7 @@ public class LoginController {
 	@PostMapping(value = "/user")
 	public ResponseEntity<Object> loginUser(@RequestBody Login login) {
 		try {
-
+			
 		} catch (Exception er) {
 
 		}
