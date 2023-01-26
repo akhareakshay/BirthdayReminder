@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codewithakshay.birthdayreminder.postgres.model.Login;
+import com.codewithakshay.birthdayreminder.postgres.model.UserManagement;
 import com.codewithakshay.birthdayreminder.postgres.repository.UserManagementRepository;
 import com.codewithakshay.birthdayreminder.postgres.service.LoginService;
 
@@ -15,8 +16,11 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public String loginUser(Login login) {
-		
-		return null;
+		String password = userManagementRepository.findPasswordByUserName(login.getUsername());
+		if (login.getPassword().equalsIgnoreCase(password))
+			return "username password is correct";
+		else
+			return "username password is incorrect";
 	}
 
 }
