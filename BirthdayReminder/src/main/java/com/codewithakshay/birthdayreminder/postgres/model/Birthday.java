@@ -45,8 +45,8 @@ public class Birthday {
 	@NotEmpty(message = "please select appropriate gender")
 	private String gender;
 //	@NotEmpty(message = "select date of birth")
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
-	private Date date;
+//	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	private String date;
 	@UpdateTimestamp
 	@Column(name = "created_at")
 	private Timestamp createdAt;
