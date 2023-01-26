@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.codewithakshay.birthdayreminder.postgres.model.UserManagement;
 
 @Repository
-public interface UserManagementRepository extends JpaRepository<UserManagement, Long>{
+public interface UserManagementRepository extends JpaRepository<UserManagement, Long> {
+
+	public UserManagement findByUserName(String userName);
 
 }
