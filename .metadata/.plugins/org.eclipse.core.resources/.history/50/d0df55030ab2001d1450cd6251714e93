@@ -1,0 +1,5 @@
+package com.codewithakshay.birthdayreminder.postgres.controller;
+
+public class EmailTemplateController {
+
+}

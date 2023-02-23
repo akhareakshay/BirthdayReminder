@@ -47,6 +47,7 @@ public class Birthday {
 //	@NotEmpty(message = "select date of birth")
 //	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	private String date;
+	private Long userId;
 	@UpdateTimestamp
 	@Column(name = "created_at")
 	private Timestamp createdAt;

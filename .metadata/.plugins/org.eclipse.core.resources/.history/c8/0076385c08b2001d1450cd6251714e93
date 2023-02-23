@@ -1,0 +1,17 @@
+package com.codewithakshay.birthdayreminder.postgres.serviceimpl;
+
+import org.springframework.stereotype.Service;
+
+import com.codewithakshay.birthdayreminder.postgres.model.Email;
+import com.codewithakshay.birthdayreminder.postgres.service.EmailService;
+
+@Service
+public class EmailServiceImpl implements EmailService {
+
+	@Override
+	public String sendEMail(Email email) {
+
+		return null;
+	}
+
+}

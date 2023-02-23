@@ -1,0 +1,9 @@
+package com.codewithakshay.birthdayreminder.postgres.service;
+
+import com.codewithakshay.birthdayreminder.postgres.model.Email;
+
+public interface EmailService {
+
+	public String sendEMail(Email email);
+
+}

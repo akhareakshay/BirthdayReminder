@@ -1,0 +1,5 @@
+package com.codewithakshay.birthdayreminder.postgres.repository;
+
+public class EmailTemplateRepository {
+
+}

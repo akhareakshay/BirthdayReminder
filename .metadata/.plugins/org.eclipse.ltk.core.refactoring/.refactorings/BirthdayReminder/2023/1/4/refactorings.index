@@ -1,0 +1,8 @@
+1674721231996	Extract local variable 'birthdayData'
+1674729808924	Extract local variable 'userManagementData'
+1674730016262	Extract local variable 'password'
+1674730356775	Extract local variable 'loginStatus'
+1674736024016	Extract local variable 'month'
+1674736042341	Extract local variable 'day'
+1674736119421	Extract local variable 'birthdayData'
+1674736242484	Extract local variable 'todaysBithdays'

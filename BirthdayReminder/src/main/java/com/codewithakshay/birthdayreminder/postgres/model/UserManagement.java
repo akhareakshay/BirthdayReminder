@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.Data;
@@ -31,8 +32,9 @@ public class UserManagement {
 	private String password;
 	@NotNull(message = "phone number should not be empty")
 	@Column(name = "phone_number")
-	private Long phoneNumber;
-	@UpdateTimestamp
+	private String phoneNumber;
+	private String email;
+	@CreationTimestamp
 	@Column(name = "created_at")
 	private Timestamp createdAt;
 

@@ -1,0 +1,19 @@
+package com.codewithakshay.birthdayreminder.postgres.serviceimpl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.codewithakshay.birthdayreminder.postgres.model.EmailTemplates;
+import com.codewithakshay.birthdayreminder.postgres.service.EmailTemplateService;
+
+@Service
+public class EmailTemplateServiceImpl implements EmailTemplateService {
+
+	@Override
+	public List<EmailTemplates> searchTemplates(EmailTemplates emailTemplates) {
+
+		return null;
+	}
+
+}

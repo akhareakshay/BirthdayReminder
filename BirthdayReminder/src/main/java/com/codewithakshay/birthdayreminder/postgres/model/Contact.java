@@ -26,7 +26,7 @@ public class Contact {
 	private Long contactId;
 	@NotNull(message = "please enter contact number")
 	@Column(name = "contact_number")
-	private Long contactNumber;
+	private String contactNumber;
 	@NotEmpty(message = "please enter email id")
 	@Column(name = "email_id")
 	private String emailId;

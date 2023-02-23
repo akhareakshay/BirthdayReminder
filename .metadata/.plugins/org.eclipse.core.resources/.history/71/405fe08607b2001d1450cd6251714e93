@@ -1,0 +1,5 @@
+package com.codewithakshay.birthdayreminder.postgres.service;
+
+public interface EmailService {
+
+}

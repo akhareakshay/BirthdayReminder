@@ -1,0 +1,6 @@
+1671731355992	Extract local variable 'allErrors'
+1671869083319	Extract local variable 'findAll'
+1671869313818	Extract local variable 'saveAllData'
+1671902890100	Delete elements
+1671910561697	Extract local variable 'allErrors'
+1671910622073	Extract local variable 'savedData'
