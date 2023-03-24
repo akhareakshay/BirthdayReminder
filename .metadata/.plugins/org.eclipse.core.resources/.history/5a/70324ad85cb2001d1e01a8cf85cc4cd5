@@ -1,8 +1,0 @@
-package com.codewithakshay.birthdayreminder.postgres.model;
-
-public class SMS {
-
-	private long toPhone;
-	private long fromPhone;
-
-}

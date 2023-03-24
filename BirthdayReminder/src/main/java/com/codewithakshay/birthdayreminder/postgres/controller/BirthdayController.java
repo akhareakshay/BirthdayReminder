@@ -1,6 +1,7 @@
 package com.codewithakshay.birthdayreminder.postgres.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -10,17 +11,22 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codewithakshay.birthdayreminder.postgres.model.Birthday;
+import com.codewithakshay.birthdayreminder.postgres.model.UserManagement;
 import com.codewithakshay.birthdayreminder.postgres.repository.BirthdayRepository;
+import com.codewithakshay.birthdayreminder.postgres.repository.UserManagementRepository;
 
 @RestController
 @RequestMapping("/birthday")
+@CrossOrigin(origins = "*")
 public class BirthdayController {
 
 	@Autowired
@@ -41,12 +47,25 @@ public class BirthdayController {
 		}
 	}
 
-	@GetMapping("/list")
+	@GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> getAllBirthdays() {
 		try {
 			List<Birthday> birthdayData = birthdayRepository.findAll();
 			if (!birthdayData.isEmpty())
 				return new ResponseEntity<>(birthdayData, HttpStatus.OK);
+			else
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception er) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	@GetMapping(value = "/getbyid/{userid}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> getBirthdaysByUser(@PathVariable Long userid) {
+		try {
+			List<Birthday> birthdaysUnderUser = birthdayRepository.findByUserId(userid);
+			if (!birthdaysUnderUser.isEmpty())
+				return new ResponseEntity<>(birthdaysUnderUser, HttpStatus.OK);
 			else
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception er) {

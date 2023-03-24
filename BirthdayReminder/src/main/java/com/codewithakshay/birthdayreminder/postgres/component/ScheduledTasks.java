@@ -37,7 +37,7 @@ public class ScheduledTasks {
 	@Autowired
 	private UserManagementRepository userManagementRepository;
 
-	@Scheduled(cron = "* * * * * *")
+	@Scheduled(cron = "0 0 0 * * *")
 	public void birthdayCheckCron() throws MessagingException {
 		String message = null;
 		List<Birthday> todaysBithdays = birthdaySerive.getTodaysBithdays();

@@ -1,7 +1,0 @@
-package com.codewithakshay.birthdayreminder.postgres.serviceimpl;
-
-import com.codewithakshay.birthdayreminder.postgres.service.EmailService;
-
-public class EmailServiceImpl implements EmailService {
-
-}

@@ -1,5 +1,0 @@
-package com.codewithakshay.birthdayreminder.postgres.component;
-
-public class ApplicationProperties {
-
-}

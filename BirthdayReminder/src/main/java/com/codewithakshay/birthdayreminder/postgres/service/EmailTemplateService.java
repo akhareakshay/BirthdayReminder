@@ -9,4 +9,6 @@ public interface EmailTemplateService {
 
 	public Optional<EmailTemplates> searchTemplates(EmailTemplates emailTemplates);
 
+	public EmailTemplates saveOrUpdateTemplate(EmailTemplates emailTemplates);
+
 }

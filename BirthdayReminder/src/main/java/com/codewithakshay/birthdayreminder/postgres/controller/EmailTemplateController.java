@@ -11,7 +11,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,7 @@ import com.codewithakshay.birthdayreminder.postgres.service.EmailTemplateService
 
 @RestController
 @RequestMapping("/emailtemplate")
+@CrossOrigin(origins = "*")
 public class EmailTemplateController {
 
 	@Autowired
@@ -82,6 +85,24 @@ public class EmailTemplateController {
 		}
 	}
 
+	@PostMapping(value = "/saveorupdateforuser", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> saveOrUpdateEmailTemplateById(@RequestBody EmailTemplates emailTemplate,
+			BindingResult bindingResult) {
+		try {
+			if (bindingResult.hasErrors()) {
+				List<ObjectError> allErrors = bindingResult.getAllErrors();
+				return new ResponseEntity<>(allErrors, HttpStatus.BAD_REQUEST);
+			}
+			EmailTemplates templateData = emailTemplateService.saveOrUpdateTemplate(emailTemplate);
+			if (templateData != null)
+				return new ResponseEntity<>(templateData, HttpStatus.OK);
+			else
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception er) {
+			return new ResponseEntity<>(er.getStackTrace(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 	@PostMapping(value = "/search", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> searchTemplates(@RequestBody EmailTemplates emailTemplates,
 			BindingResult bindingResult) {
@@ -95,6 +116,19 @@ public class EmailTemplateController {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} catch (Exception er) {
 			return new ResponseEntity<>(er.getStackTrace(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	@GetMapping(value = "/getbyid/{userid}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Object> getTemplateByUserId(@PathVariable Long userid) {
+		try {
+			List<EmailTemplates> templatesUnderUser = emailTemplateRepository.findByUserId(userid);
+			if (!templatesUnderUser.isEmpty())
+				return new ResponseEntity<>(templatesUnderUser, HttpStatus.OK);
+			else
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} catch (Exception er) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 

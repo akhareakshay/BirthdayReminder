@@ -1,5 +1,0 @@
-package com.codewithakshay.birthdayreminder.postgres.model;
-
-public class EmailTemplates {
-
-}

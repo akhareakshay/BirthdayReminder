@@ -9,5 +9,7 @@ import com.codewithakshay.birthdayreminder.postgres.model.EmailTemplates;
 
 @Repository
 public interface EmailTemplateRepository extends JpaRepository<EmailTemplates, Long> {
+	
+	public List<EmailTemplates> findByUserId(Long userId);
 
 }

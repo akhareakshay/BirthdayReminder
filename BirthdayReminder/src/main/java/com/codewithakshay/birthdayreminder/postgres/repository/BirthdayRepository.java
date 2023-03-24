@@ -15,4 +15,6 @@ public interface BirthdayRepository extends JpaRepository<Birthday, Long> {
 //	@Query("select * from Birthday where date like %:date%")
 	public List<Birthday> findByDateLike(String date);
 
+	public List<Birthday> findByUserId(Long userId);
+
 }

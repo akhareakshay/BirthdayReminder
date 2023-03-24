@@ -18,5 +18,6 @@ public class EmailTemplates {
 	private long emailTempleId;
 	private String subject;
 	private String message;
+	private Long userId;
 
 }

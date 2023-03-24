@@ -24,4 +24,12 @@ public class EmailTemplateServiceImpl implements EmailTemplateService {
 		return templateData;
 	}
 
+	@Override
+	public EmailTemplates saveOrUpdateTemplate(EmailTemplates emailTemplates) {
+		List<EmailTemplates> tempalateData = emailTemplateRepository.findByUserId(emailTemplates.getUserId());
+		emailTemplates.setEmailTempleId(tempalateData.get(0).getEmailTempleId());
+
+		return emailTemplateRepository.save(emailTemplates);
+	}
+
 }
